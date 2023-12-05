@@ -3,6 +3,6 @@
 3    package="expo.modules.mymodule" >
 4
 5    <uses-sdk android:minSdkVersion="21" />
-5-->/Users/osp/Developer/matrixtest/modules/my-module/android/src/main/AndroidManifest.xml
+5-->/Users/osp/Developer/jsi_benchmark/modules/my-module/android/src/main/AndroidManifest.xml
 6
 7</manifest>

@@ -144,6 +144,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>ANDROID (debug)</Text>
       <Text style={styles.header}>Function Calls</Text>
       <Text style={styles.label}>Pure JS </Text>
       <Text>{results.pureTime.toFixed(2)}ms</Text>
@@ -195,6 +196,9 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  title: {
+    fontSize: 32,
+  },
   container: {
     flex: 1,
     backgroundColor: "#fff",
