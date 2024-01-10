@@ -1,9 +1,10 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
-import { answer, getExpoRecord } from "./modules/my-module";
-import { useEffect, useState } from "react";
-import performance from "react-native-performance";
 import { ACCESSIBILITY } from "@op-engineering/op-s2";
+import { useEffect, useState } from "react";
+import { Platform, StyleSheet, Text, View } from "react-native";
+import performance from "react-native-performance";
+import { VictoryAxis, VictoryBar, VictoryChart, VictoryLabel, VictoryTheme } from "victory-native";
+import { answer, getExpoRecord } from "./modules/my-module";
+import { LinearGradient } from 'expo-linear-gradient';
 // Here to force op-s2 to load
 const randomValue = ACCESSIBILITY.AFTER_FIRST_UNLOCK;
 
@@ -18,23 +19,19 @@ const jsObject = {
 const jsMap = new Map();
 jsMap.set("duck", 7);
 
+const chartTheme = {...VictoryTheme.material}
+chartTheme.axis.style.tickLabels.fill = 'white'
+
+
+
 function jsAnswer() {
   return 42;
 }
 
 export default function App() {
-  const [results, setResults] = useState<any>({
-    pureTime: 0,
-    expoTime: 0,
-    hostObjectTime: 0,
-    jsiObjectTime: 0,
-    jsAccessTime: 0,
-    mapAccessTime: 0,
-    expoAccessTime: 0,
-    jsiAccessTime: 0,
-    hostObjectAccessTime: 0,
-    nativeStateAccessTime: 0,
-  });
+
+  const [data, setData] = useState([])
+  const [accessData, setAccessData] = useState([])
 
   useEffect(() => {
     let start = performance.now();
@@ -128,69 +125,70 @@ export default function App() {
     end = performance.now();
     let nativeStateAccessTime = end - start;
 
-    setResults({
-      pureTime,
-      expoTime,
-      hostObjectTime,
-      jsiObjectTime,
-      jsAccessTime,
-      mapAccessTime,
-      expoAccessTime,
-      jsiAccessTime,
-      hostObjectAccessTime,
-      nativeStateAccessTime,
-    });
+    setData([
+      {source: 'Expo', time: expoTime},
+      {source: 'HostObject', time: hostObjectTime},
+      {source: 'JSI fn', time: jsiObjectTime},
+      {source: 'Vanilla JS', time: pureTime},
+    ])
+    
+    setAccessData([
+      {source: 'JSI Native State', time: nativeStateAccessTime},
+      {source: 'HostObject', time: hostObjectAccessTime},
+      {source: 'JS Map', time: mapAccessTime},
+      {source: 'Expo', time: expoAccessTime},
+      {source: 'JSI', time: jsiAccessTime},
+      {source: 'Vanilla JS', time: jsAccessTime},
+    ])
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>ANDROID (debug)</Text>
-      <Text style={styles.header}>Function Calls</Text>
-      <Text style={styles.label}>Pure JS </Text>
-      <Text>{results.pureTime.toFixed(2)}ms</Text>
-      <Text style={styles.label}>Expo Module</Text>
-      <Text>
-        {results.expoTime.toFixed(2)}ms →{" "}
-        {(results.expoTime / results.pureTime).toFixed(2)}x
-      </Text>
-      <Text style={styles.label}>C++ Host Object </Text>
-      <Text>
-        {results.hostObjectTime.toFixed(2)}ms →{" "}
-        {(results.hostObjectTime / results.pureTime).toFixed(2)}x
-      </Text>
-      <Text style={styles.label}>C++ JSI </Text>
-      <Text>
-        {results.jsiObjectTime.toFixed(2)}ms →{" "}
-        {(results.jsiObjectTime / results.pureTime).toFixed(2)}x
-      </Text>
-      <Text style={styles.header}>Object access</Text>
-      <Text style={styles.label}>JS Record</Text>
-      <Text>{results.jsAccessTime.toFixed(2)}ms</Text>
-      <Text style={styles.label}>JS Map</Text>
-      <Text>
-        {results.mapAccessTime.toFixed(2)}ms →{" "}
-        {(results.mapAccessTime / results.jsAccessTime).toFixed(2)}x
-      </Text>
-      <Text style={styles.label}>Expo Record</Text>
-      <Text>
-        {results.expoAccessTime.toFixed(2)}ms →{" "}
-        {(results.expoAccessTime / results.jsAccessTime).toFixed(2)}x
-      </Text>
-      <Text style={styles.label}>JSI Raw Object</Text>
-      <Text>
-        {results.jsiAccessTime.toFixed(2)}ms →{" "}
-        {(results.jsiAccessTime / results.jsAccessTime).toFixed(2)}x
-      </Text>
-      <Text style={styles.label}>JSI Host Object</Text>
-      <Text>
-        {results.hostObjectAccessTime.toFixed(2)}ms →{" "}
-        {(results.hostObjectAccessTime / results.jsAccessTime).toFixed(2)}x
-      </Text>
-      <Text style={styles.label}>Native State Object</Text>
-      <Text>
-        {results.nativeStateAccessTime.toFixed(2)}ms →{" "}
-        {(results.nativeStateAccessTime / results.jsAccessTime).toFixed(2)}x
-      </Text>
+      <LinearGradient
+        // Background Linear Gradient
+        colors={['rgba(0,0,0,0.8)', 'rgba(0,0,0,0.9)']}
+        style={styles.background}
+      />
+      <Text style={styles.title}>{Platform.OS}</Text>
+      <Text style={styles.subtitle}>{ITERATIONS} iterations</Text>
+      
+      <VictoryChart 
+      width={350} 
+      height={250} theme={chartTheme} padding={{left: 100, top: 40, bottom: 75, right: 60}}>
+        <Text style={styles.subtitle}>Function call</Text>
+          <VictoryBar 
+            style={{ data: { fill: "white" }, labels: {fill: 'white'} }}
+            labels={({ datum }) => `${datum.time.toFixed(2)}ms`}
+            padding={200}
+            data={data} 
+            x="source" 
+            y="time" 
+            horizontal 
+            alignment="start" 
+            barWidth={20} 
+            // style={{ labels: { fill: "red" } }} 
+            labelComponent={<VictoryLabel dy={-8} />}
+          />
+          <VictoryAxis style={{grid: {stroke: 'transparent'}}}/>
+          {/* <VictoryAxis dependentAxis/> */}
+        </VictoryChart>
+      <VictoryChart width={350} height={300} theme={chartTheme} padding={{left: 100, top: 40, bottom: 75, right: 60}}>
+        <Text style={styles.subtitle}>Property access</Text>
+          <VictoryBar 
+            style={{ data: { fill: "white" }, labels: {fill: 'white'} }}
+            labels={({ datum }) => `${datum.time.toFixed(2)}ms`}
+            padding={200}
+            data={accessData} 
+            x="source" 
+            y="time" 
+            horizontal 
+            alignment="start" 
+            barWidth={20} 
+            // style={{ labels: { fill: "red" } }} 
+            labelComponent={<VictoryLabel dy={-8}/>}
+          />
+          <VictoryAxis style={{grid: {stroke: 'transparent'}}}/>
+        </VictoryChart>
     </View>
   );
 }
@@ -198,6 +196,11 @@ export default function App() {
 const styles = StyleSheet.create({
   title: {
     fontSize: 32,
+    color: 'white'
+  },
+  subtitle: {
+    color: 'white',
+    marginBottom: 40
   },
   container: {
     flex: 1,
@@ -213,4 +216,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginTop: 10,
   },
+  background: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0
+  }
 });
