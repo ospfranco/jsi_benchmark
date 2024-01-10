@@ -1,0 +1,6 @@
+[
+    {
+        "merged": "expo.modules.mymodule.my-module-merged_res-34:/drawable-v23/abc_control_background_material.xml",
+        "source": "expo.modules.mymodule.my-module-appcompat-1.4.1-28:/drawable-v23/abc_control_background_material.xml"
+    }
+]

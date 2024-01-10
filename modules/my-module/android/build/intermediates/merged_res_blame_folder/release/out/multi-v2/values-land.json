@@ -1,0 +1,34 @@
+{
+    "logs": [
+        {
+            "outputFile": "expo.modules.mymodule.my-module-merged_res-34:/values-land/values-land.xml",
+            "map": [
+                {
+                    "source": "/Users/osp/.gradle/caches/transforms-3/f7c5e03387f63f3788dbd5294d085d57/transformed/appcompat-1.4.1/res/values-land/values-land.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,125,196",
+                        "endColumns": "69,70,67",
+                        "endOffsets": "120,191,259"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "expo.modules.mymodule.my-module-mergeReleaseResources-32:/values-land/values-land.xml",
+            "map": [
+                {
+                    "source": "/Users/osp/.gradle/caches/transforms-3/f7c5e03387f63f3788dbd5294d085d57/transformed/appcompat-1.4.1/res/values-land/values-land.xml",
+                    "from": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,125,196",
+                        "endColumns": "69,70,67",
+                        "endOffsets": "120,191,259"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "expo.modules.mymodule.my-module-merged_res-34:/layout-watch-v20/abc_alert_dialog_title_material.xml",
+        "source": "expo.modules.mymodule.my-module-appcompat-1.4.1-28:/layout-watch-v20/abc_alert_dialog_title_material.xml"
+    },
+    {
+        "merged": "expo.modules.mymodule.my-module-merged_res-34:/layout-watch-v20/abc_alert_dialog_button_bar_material.xml",
+        "source": "expo.modules.mymodule.my-module-appcompat-1.4.1-28:/layout-watch-v20/abc_alert_dialog_button_bar_material.xml"
+    }
+]

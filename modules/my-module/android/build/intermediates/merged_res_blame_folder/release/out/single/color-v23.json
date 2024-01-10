@@ -1,0 +1,38 @@
+[
+    {
+        "merged": "expo.modules.mymodule.my-module-merged_res-34:/color-v23/abc_tint_default.xml",
+        "source": "expo.modules.mymodule.my-module-appcompat-1.4.1-28:/color-v23/abc_tint_default.xml"
+    },
+    {
+        "merged": "expo.modules.mymodule.my-module-merged_res-34:/color-v23/abc_tint_switch_track.xml",
+        "source": "expo.modules.mymodule.my-module-appcompat-1.4.1-28:/color-v23/abc_tint_switch_track.xml"
+    },
+    {
+        "merged": "expo.modules.mymodule.my-module-merged_res-34:/color-v23/abc_color_highlight_material.xml",
+        "source": "expo.modules.mymodule.my-module-appcompat-1.4.1-28:/color-v23/abc_color_highlight_material.xml"
+    },
+    {
+        "merged": "expo.modules.mymodule.my-module-merged_res-34:/color-v23/abc_tint_seek_thumb.xml",
+        "source": "expo.modules.mymodule.my-module-appcompat-1.4.1-28:/color-v23/abc_tint_seek_thumb.xml"
+    },
+    {
+        "merged": "expo.modules.mymodule.my-module-merged_res-34:/color-v23/abc_tint_edittext.xml",
+        "source": "expo.modules.mymodule.my-module-appcompat-1.4.1-28:/color-v23/abc_tint_edittext.xml"
+    },
+    {
+        "merged": "expo.modules.mymodule.my-module-merged_res-34:/color-v23/abc_tint_btn_checkable.xml",
+        "source": "expo.modules.mymodule.my-module-appcompat-1.4.1-28:/color-v23/abc_tint_btn_checkable.xml"
+    },
+    {
+        "merged": "expo.modules.mymodule.my-module-merged_res-34:/color-v23/abc_btn_colored_borderless_text_material.xml",
+        "source": "expo.modules.mymodule.my-module-appcompat-1.4.1-28:/color-v23/abc_btn_colored_borderless_text_material.xml"
+    },
+    {
+        "merged": "expo.modules.mymodule.my-module-merged_res-34:/color-v23/abc_btn_colored_text_material.xml",
+        "source": "expo.modules.mymodule.my-module-appcompat-1.4.1-28:/color-v23/abc_btn_colored_text_material.xml"
+    },
+    {
+        "merged": "expo.modules.mymodule.my-module-merged_res-34:/color-v23/abc_tint_spinner.xml",
+        "source": "expo.modules.mymodule.my-module-appcompat-1.4.1-28:/color-v23/abc_tint_spinner.xml"
+    }
+]

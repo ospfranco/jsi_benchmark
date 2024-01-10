@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "expo.modules.mymodule.my-module-merged_res-34:/layout-v21/notification_template_custom_big.xml",
+        "source": "expo.modules.mymodule.my-module-core-1.8.0-1:/layout-v21/notification_template_custom_big.xml"
+    },
+    {
+        "merged": "expo.modules.mymodule.my-module-merged_res-34:/layout-v21/notification_template_icon_group.xml",
+        "source": "expo.modules.mymodule.my-module-core-1.8.0-1:/layout-v21/notification_template_icon_group.xml"
+    },
+    {
+        "merged": "expo.modules.mymodule.my-module-merged_res-34:/layout-v21/notification_action.xml",
+        "source": "expo.modules.mymodule.my-module-core-1.8.0-1:/layout-v21/notification_action.xml"
+    },
+    {
+        "merged": "expo.modules.mymodule.my-module-merged_res-34:/layout-v21/notification_action_tombstone.xml",
+        "source": "expo.modules.mymodule.my-module-core-1.8.0-1:/layout-v21/notification_action_tombstone.xml"
+    }
+]
